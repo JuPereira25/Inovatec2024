@@ -1,6 +1,7 @@
 # 🗑️ SmartBin - Sistema de Lixeiras Inteligentes
 
 > Dashboard para gerenciamento inteligente de coleta de resíduos urbanos
+![Image](https://github.com/user-attachments/assets/204fe666-1d6a-4086-9b7c-b869844f6bc6)
 
 ## Sobre o Projeto
 
