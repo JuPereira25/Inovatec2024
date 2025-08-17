@@ -1,0 +1,347 @@
+/* Importing Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #E9E9E9;
+    
+    /* Novo: Layout Grid para o corpo da página */
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: 85px 1fr; /* 85px para a barra lateral, o resto para o conteúdo principal */
+    grid-template-rows: 50px 1fr;
+}
+
+.header-container {
+    background-color: #fff;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1000; /* Garante que fique acima do mapa */
+    
+    /* Novo: Define a área do header no grid */
+    grid-area: header;
+}
+
+.header-container h1 {
+    font-size: 1rem;
+    color: #757575;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 85px;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    background: #161a2d;
+    padding: 25px 20px;
+    transition: all 0.4s ease;
+    z-index: 1000; /* Garante que fique acima do mapa */
+    
+    /* Novo: Define a área da sidebar no grid */
+    grid-area: sidebar;
+}
+
+.sidebar:hover {
+    width: 260px;
+}
+
+.sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .sidebar-header img {
+    width: 42px;
+    border-radius: 50%;
+}
+
+.sidebar .sidebar-header h2 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 23px;
+}
+
+.sidebar-links h4 {
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+    margin: 10px 0;
+    position: relative;
+}
+
+.sidebar-links h4 span {
+    opacity: 0;
+}
+
+.sidebar:hover .sidebar-links h4 span {
+    opacity: 1;
+}
+
+.sidebar-links .menu-separator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(1);
+    transform: translateY(-50%);
+    background: #339368;
+    transform-origin: right;
+    transition-delay: 0.2s;
+}
+
+.sidebar:hover .sidebar-links .menu-separator {
+    transition-delay: 0s;
+    transform: scaleX(0);
+}
+
+.sidebar-links {
+    list-style: none;
+    margin-top: 20px;
+    height: 80%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebar-links::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-links li a {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+    color: #fff;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 15px 10px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.sidebar-links li a:hover {
+    color: #161a2d;
+    background: #339368;
+    border-radius: 4px;
+}
+
+.user-account {
+    margin-top: auto;
+    padding: 12px 10px;
+    margin-left: -10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    color: #161a2d;
+}
+
+.user-profile img {
+    width: 42px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.user-profile h3 {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.user-profile span {
+    font-size: 0.775rem;
+    font-weight: 600;
+}
+
+.user-detail {
+    margin-left: 23px;
+    white-space: nowrap;
+}
+
+.sidebar:hover .user-account {
+    background: #339368;
+    border-radius: 4px;
+}
+
+/* --- Novos Estilos para o Dashboard --- */
+
+.dashboard-main-content {
+    grid-area: main;
+    padding: 20px;
+}
+
+.dashboard-grid-container {
+    display: grid;
+    /* Divide o espaço em duas colunas: a esquerda (mapa) com 2/3 e a direita (cards) com 1/3 */
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Container principal do mapa */
+#map-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+    min-height: 500px; /* Altura mínima */
+}
+
+/* Mapa em si - preenche o container */
+#map {
+    width: 100%;
+    height: 100%; /* Agora usa 100% do container pai */
+    flex-grow: 1; /* Expande para preencher */
+    border-radius: 8px;
+}
+
+.stats-cards-container {
+    /* Empilha os cards na vertical, um abaixo do outro */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.kpi-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    /* Remove a largura máxima para que ele preencha a coluna */
+}
+
+.kpi-card h2 {
+    font-size: 2.5rem;
+    color: #161a2d;
+    margin-top: 5px;
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    color: #757575;
+}
+
+.kpi-card .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: #339368;
+}
+
+.street-priority-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.priority-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.priority-item:last-child {
+    border-bottom: none;
+}
+
+.priority-item .material-symbols-outlined {
+    font-size: 2rem;
+}
+
+.priority-item.high-priority .material-symbols-outlined {
+    color: #f44336; /* Cor de perigo */
+}
+
+.priority-item.medium-priority .material-symbols-outlined {
+    color: #ff9800; /* Cor de alerta */
+}
+
+.send-route-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #339368;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.send-route-button:hover {
+    background-color: #2a7a58;
+}
+
+/* Controles do mapa - garantem que fiquem abaixo do sidebar */
+.leaflet-control-zoom,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    z-index: 999 !important; /* Menor que o sidebar (1000) */
+}
+
+.leaflet-control-attribution,
+.leaflet-control-attribution.leaflet-control {
+    z-index: 999 !important; /* Menor que o sidebar (1000) */
+}
+
+/* Todos os outros controles do Leaflet com maior especificidade */
+.leaflet-control,
+.leaflet-control-container .leaflet-control,
+body .leaflet-control {
+    z-index: 999 !important; /* Menor que o sidebar (1000) */
+}
+
+/* Força o z-index para qualquer elemento do Leaflet */
+[class*="leaflet-control"] {
+    z-index: 999 !important;
+}
+
+/* Container principal do Leaflet */
+.leaflet-container {
+    z-index: 1 !important;
+}
