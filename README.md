@@ -79,12 +79,6 @@ smartbin/
 4. **Push** para a branch (`git push origin feature/NovaFuncionalidade`)
 5. **Abra** um Pull Request
 
-## Documentação
-
-- **[Documentação Técnica](DOCUMENTACAO_TECNICA.md)** - Detalhes de implementação
-- **[Leaflet.js](https://leafletjs.com/reference.html)** - Biblioteca de mapas
-- **[CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)** - Layout moderno
-- **[Material Design](https://material.io/design)** - Sistema de design
 
 ## Licença
 
